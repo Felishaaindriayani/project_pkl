@@ -28,6 +28,15 @@ class KomentarController extends Controller
     {
         $users = User::all();
         return view('admin.komentar.create', compact('users'));
+
+        // Comment::create([
+        //     'user_id' => auth()->id(),
+        //     'comment' => $request->comment,
+        // ]);
+
+        // auth()->logout();
+
+        // return redirect()->route('login');
     }
 
     /**
@@ -108,4 +117,6 @@ class KomentarController extends Controller
         $komentar->delete();
         return redirect()->route('komentar.index');
     }
+
+    
 }

@@ -37,14 +37,14 @@ class KategoriController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'nama_kategori' => 'required',
+        $validatedData = $request->validate([
+            'nama_kategori' => 'required|string|max:255',
         ]);
 
-            $kategori = new Kategori();
-            $kategori->nama_kategori = $request->nama_kategori;
-            $kategori->save();
-            return redirect()->route('kategori.index');
+        $kategori = new Kategori();
+        $kategori->nama_kategori = $request->nama_kategori;
+        $kategori->save();
+        return redirect()->route('kategori.index');
     }
 
     /**
@@ -55,7 +55,7 @@ class KategoriController extends Controller
      */
     public function show($id)
     {
-        
+
     }
 
     /**
@@ -67,7 +67,7 @@ class KategoriController extends Controller
     public function edit($id)
     {
         $kategori = Kategori::findOrFail($id);
-        return view('admin.kategori.edit', compact('kategori')); 
+        return view('admin.kategori.edit', compact('kategori'));
     }
 
     /**
@@ -83,10 +83,10 @@ class KategoriController extends Controller
             'nama_kategori' => 'required',
         ]);
 
-            $kategori = Kategori::findOrFail($id);
-            $kategori->nama_kategori = $request->nama_kategori;
-            $kategori->save();
-            return redirect()->route('kategori.index');
+        $kategori = Kategori::findOrFail($id);
+        $kategori->nama_kategori = $request->nama_kategori;
+        $kategori->save();
+        return redirect()->route('kategori.index');
     }
 
     /**

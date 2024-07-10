@@ -5,14 +5,10 @@
             <div class="quixnav-scroll">
                 <ul class="metismenu" id="menu">
                     <li class="nav-label first">Main Menu</li>
-                    <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
+                    <li><a href="{{route('home')}}"><i
                                 class="icon icon-single-04"></i><span class="nav-text">Dashboard</span></a>
-                        <ul aria-expanded="false">
-                            <li><a href="./index.html">Dashboard 1</a></li>
-                        </ul>
                     </li>
-                    <li class="nav-label">Apps</li>
-                    <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
+                    {{-- <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
                                 class="icon icon-app-store"></i><span class="nav-text">Apps</span></a>
                         <ul aria-expanded="false">
                             <li><a href="./app-profile.html">Profile</a></li>
@@ -25,7 +21,7 @@
                             </li>
                             <li><a href="./app-calender.html">Calendar</a></li>
                         </ul>
-                    </li>
+                    </li> --}}
                     <li class="nav-label">Table</li>
                     <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
                                 class="icon icon-layout-25"></i><span class="nav-text">Table</span></a>

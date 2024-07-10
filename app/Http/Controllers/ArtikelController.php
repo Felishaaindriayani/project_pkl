@@ -50,7 +50,6 @@ class ArtikelController extends Controller
         $artikel->id_user = $request->id_user;
         $artikel->id_kategori = $request->id_kategori;
         $artikel->id_komentar = $request->id_komentar;
-        $artikel->cover = $request->cover;
 
 
         if ($request->hasFile('cover')){
@@ -84,7 +83,7 @@ class ArtikelController extends Controller
     public function edit($id)
     {
         $artikel = Artikel::findOrFail($id);
-        $users = Users::all();
+        $users = User::all();
         $kategori = Kategori::all();
         $komentar = Komentar::all();
         return view('admin.artikel.edit', compact('artikel','users','kategori','komentar'));
@@ -108,11 +107,11 @@ class ArtikelController extends Controller
         $artikel->id_komentar = $request->id_komentar;
 
         if ($request->hasFile('cover')){
-            $product->deleteImage();
+            $artikel->deleteImage();
             $img = $request->file('cover');
             $name = rand(1000,9999) . $img->getClientOriginalName();
             $img->move('images/artikel', $name);
-            $product->cover = $name;
+            $artikel->cover = $name;
         }
         $artikel->save();
         return redirect()->route('artikel.index');

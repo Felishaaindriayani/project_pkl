@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('artikels', function (Blueprint $table) {
             $table->id();
             $table->string('judul');
-            $table->string('isi');
+            $table->longtext('isi');
             $table->date('tgl_publikasi');
             $table->unsignedBigInteger('id_user');
             $table->unsignedBigInteger('id_kategori');

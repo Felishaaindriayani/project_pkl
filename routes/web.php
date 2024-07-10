@@ -28,6 +28,8 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/', [FrontController::class, 'index']);
+Route::get('artikel/{id}', [FrontController::class, 'detail']);
+
 
 
 

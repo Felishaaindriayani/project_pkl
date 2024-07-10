@@ -7,7 +7,7 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="manifest" href="site.webmanifest">
-		<link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
+		<link rel="shortcut icon" type="image/x-icon" href="{{asset('front/assets/img/favicon.ico')}}">
 
 		<!-- CSS here -->
             <link rel="stylesheet" href="{{asset('front/assets/css/bootstrap.min.css')}}">
@@ -76,7 +76,7 @@
         
 		<!-- Jquery Plugins, main Jquery -->	
         <script src="{{asset('front/assets/js/plugins.js')}}"></script>
-        <script src="{{asset('front/assets/js/main.js')}}"></script>
+        <script src="./{{asset('front/assets/js/main.js')}}"></script>
         
     </body>
 </html>

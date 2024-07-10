@@ -29,7 +29,7 @@
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Isi</label>
-                            <input type="text" class="form-control @error('isi') is-invalid @enderror" name="isi" required>
+                            <textarea type="text" class="form-control @error('isi') is-invalid @enderror" name="isi" required></textarea>
                             @error('isi')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>

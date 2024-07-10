@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Artikel;
+use App\Models\Kategori;
+use App\Models\Komentar;
+use App\Models\User;
 
 class HomeController extends Controller
 {
@@ -23,6 +27,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $artikel = Artikel::count('id');
+        $kategori = Kategori::count('id');
+        $komentar = Komentar::count('id');
+        $user = User::count('id');
+        return view('home', compact('artikel','kategori','komentar','user'));
     }
 }
