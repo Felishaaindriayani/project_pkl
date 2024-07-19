@@ -52,7 +52,7 @@
                                 <div class="main-menu d-none d-md-block">
                                         <ul id="navigation">    
                                             <li><a href="{{url('/')}}">Home</a></li>
-                                            <li><a href="categori.html">Category</a></li>
+                                            <li><a href="{{url('#kategori')}}">Category</a></li>
                                             <li><a href="#">About</a></li>
                                             {{-- <li><a href="latest_news.html">Comment</a></li> --}}
                                             <li style="margin-bottom: -1%; margin-left: 45%;" >
@@ -67,16 +67,27 @@
                                                     </div>
                                                 </div>
                                             </li>
-                                            <li style="text-align: right">@if (Route::has('login'))
-                                                @auth
+                                            <li class="header-user">
+                                            @guest
+                                                <a href="{{url('login')}}">Login</a> 
                                                 @else
-                                                    <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
-
-                                                {{-- @if (Route::has('register'))
-                                                <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a>
-                                                @endif --}}
-                                                @endauth
-                                                @endif
+                                            <a href="{{route('logout')}}"
+                                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                                <span>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"
+                                                        class="fill-current">
+                                                        <path fill="none" d="M0 0h24v24H0z"></path>
+                                                        <path
+                                                            d="M20 22H4v-2a5 5 0 0 1 5-5h6a5 5 0 0 1 5 5v2zm-8-9a6 6 0 1 1 0-12 6 6 0 0 1 0 12z">
+                                                        </path>
+                                                    </svg>
+                                                </span>
+                                                Logout
+                                            </a>
+                                            <form action="{{route('logout')}}" method="post" id="logout-form">
+                                                @csrf
+                                            </form>
+                                            @endguest
                                             </li>
                                         </ul>
                                 </div>

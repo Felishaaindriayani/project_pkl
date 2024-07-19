@@ -25,7 +25,8 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('IsAdmin');
+Route::get('user/user', [App\Http\Controllers\user\HomeController::class, 'index'])->name('user.user');
 
 Route::get('/', [FrontController::class, 'index']);
 Route::get('artikel/{id}', [FrontController::class, 'detail']);
@@ -33,11 +34,11 @@ Route::get('artikel/{id}', [FrontController::class, 'detail']);
 
 
 
-Route::group(['prefix' => 'admin', 'middleware' => ['auth', IsAdmin::class]], function () {
-    Route::get('/', function () {
-        return view('admin.index');
-    });
-    // untuk Route Backend Lainnya
+// Route::group(['prefix' => 'admin', 'middleware' => ['auth', IsAdmin::class]], function () {
+//     Route::get('/', function () {
+//         return view('admin.index');
+//     });
+//     // untuk Route Backend Lainnya
 
     Route::resource('user', App\Http\Controllers\UsersController::class);
 
@@ -48,5 +49,5 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', IsAdmin::class]], fu
     Route::resource('artikel', App\Http\Controllers\ArtikelController::class);
 
 
-});
+// });
 

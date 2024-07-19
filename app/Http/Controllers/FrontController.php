@@ -10,9 +10,9 @@ class FrontController extends Controller
     public function index()
     {
         $artikel = Artikel::latest()->limit(1)->get();
-        $list = Artikel::latest()->limit(5)->get();
-        $kategori = Kategori::all();
-        return view('index', compact('artikel', 'kategori', 'list'));
+        $list = Artikel::latest()->limit(3)->get();
+        $category = Artikel::latest()->limit(4)->get();
+        return view('index', compact('artikel', 'list', 'category'));
     }
 
     public function detail($id)
@@ -24,6 +24,13 @@ class FrontController extends Controller
 
     public function komentar()
     {
+        Comment::create([
+            'user_id' => auth()->id(),
+            'komentar' => $request->comment,
+        ]);
 
+        auth()->logout();
+
+        return redirect()->route('login');
     }
 }
